@@ -1,0 +1,29 @@
+---
+title: "Time Plots"
+author: "Himanshu"
+date: "March 15, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+jj <- astsa::jj
+plot(jj, type = 'o', main = "Johnson and Johnson quarterly earning per share", ylab = "Earnings", xlab = "Years")
+
+```
+```{r}
+flu <- astsa::flu
+plot(flu, ylab = " No. of death per 10,000 people", xlab= " Months")
+```
+```{r}
+globtemp <- astsa::globtemp
+plot(globtemp, ylab = "Temperature deviations", xlab = "Years" , type = "o")
+```
+```{r}
+star <- astsa::star
+plot(star, main = " Magnitude of stars taken at midnight for 600 consecutive days", ylab = "Magnitude", xlab = "Days")
+```
+
