@@ -1,0 +1,58 @@
+---
+title: "Random walk  and Moving average"
+output: html_notebook
+---
+```{r}
+knitr::opts_chunk$set(fig.width=12, fig.height=8) 
+par(oma=c(0,0,2,0))
+```
+
+
+```{r}
+x = NULL
+x[1] =0
+for(i in 2:1000){
+  x[i] = x[i-1]+ rnorm(1)
+}
+
+random_walk = ts(x)
+plot(random_walk, main = "Random walk", col = 'green', lwd = 2)
+```
+
+```{r}
+acf(random_walk, main = "random walk")
+```
+
+```{r}
+#removing trend
+acf(diff(random_walk))
+```
+```{r}
+#Simulating MA(2) process
+# Generate noise
+noise=rnorm(10000)
+# Introduce a variable
+ma_2=NULL
+
+# Loop for generating MA(2) process
+
+for(i in 3:10000){
+    ma_2[i]=noise[i]+0.7*noise[i-1]+0.2*noise[i-2]
+}
+
+# Shift data to left by 2 units
+moving_average_process=ma_2[3:10000]
+# Put time series structure on a vanilla data
+moving_average_process=ts(moving_average_process)
+# Partition output graphics as a multi frame of 2 rows and 1 column
+par(mfrow=c(2,1))
+# plot the process and plot its ACF
+plot(moving_average_process, main='A moving average process of order 2', ylab=' ', col='blue')
+acf(moving_average_process, main='Correlogram of a moving average process of order 2')
+
+```
+```{r}
+set.seed=1
+(acf(arima.sim(n=1000, model=list(ma=c(XX,XX)))))
+```
+

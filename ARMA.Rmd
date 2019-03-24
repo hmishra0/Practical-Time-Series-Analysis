@@ -1,0 +1,14 @@
+---
+title: "ARMA Model "
+output: html_notebook
+---
+
+```{r}
+
+plot(discoveries, main = "Time series of Major discoveries in a year")
+
+```
+```{r}
+stripchart(discoveries, method = "stack", offset=.5, at = .15, pch = 19, main = "No. of discoveries Dotplot", xlab= "Number of major scientific discoveres in an year", ylab = "frequency")
+```
+
